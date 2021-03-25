@@ -1,0 +1,21 @@
+f=@(x,y)y*(1-y^2);
+[x,y]=Explicit_Euler(f,[0,1],2,0.1);
+y1=dsolve('Dy-y*(1-y*y)=0','y(0)=2','x');
+ezplot(y1,[0,1])
+hold on;
+plot(x,y,'k.-','MarkerSize',20)
+text([0.05,0.06236],[1.2,1.9],{'black:Euler法','blue:解析解'},...
+    'fontname','隶书','fontsize',16)
+[t,y]=Classical_RK4(f,[0,1],2,0.1);f=@(x,y)y*(1-y^2);
+plot(t,y,'r.-','MarkerSize',20)
+text([0.24],[1.418],{'red:4阶Runge-Kutta法'},...
+    'fontname','隶书','fontsize',16)
+f=@(x,y)y*(1-y^2);
+[x,y]=Improve_Euler(f,[0,1],2,0.1);
+plot(x,y,'g.-','MarkerSize',20)
+text([0.6],[1.2],{'green:改进Euler法'},...
+    'fontname','隶书','fontsize',16)
+[t,y]=Classical_RK2(f,[0,1],2,0.1);f=@(x,y)y*(1-y^2);
+plot(t,y,'y.-','MarkerSize',20)
+text([0.14],[1.6],{'yellow:2阶Runge-Kutta法'},...
+    'fontname','隶书','fontsize',16)
